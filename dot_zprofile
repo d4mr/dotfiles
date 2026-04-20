@@ -1,0 +1,10 @@
+# Login shells: runs AFTER /etc/zprofile's path_helper resets PATH to system defaults.
+# This file reconstructs PATH with our tool entries.
+
+eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+
+# mise manages its own shim path (works in non-interactive sessions too).
+eval "$(mise activate zsh --shims)"
+
+# Tools not managed by mise
+export PATH="$HOME/.local/bin:$BUN_INSTALL/bin:$HOME/.config/.foundry/bin:$PATH"

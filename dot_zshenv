@@ -1,20 +1,13 @@
-# Sourced for ALL zsh invocations — interactive, login, scripts, `zsh -c`, IDEs.
-# Keep this fast and side-effect free. Env vars only.
+# Sourced for ALL zsh invocations. Env vars only — keep this fast and side-effect free.
 
-# XDG Base Directory spec
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
 
-# zsh history — stored under XDG_STATE_HOME, not tracked
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 
-# bun
 export BUN_INSTALL="$XDG_DATA_HOME/bun"
 
 # Rust / cargo (installed by rustup)
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
-
-# PATH: mise shims first so `node`/`go`/`python` resolve without the interactive precmd hook.
-export PATH="$XDG_DATA_HOME/mise/shims:$HOME/.local/bin:$BUN_INSTALL/bin:$HOME/.config/.foundry/bin:$PATH"
