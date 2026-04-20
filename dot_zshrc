@@ -19,6 +19,9 @@ eval "$(zoxide init zsh)"
 # mise — polyglot version manager (node, go, python, etc.)
 eval "$(mise activate zsh)"
 
+# uv — tool installs land here
+export PATH="$HOME/.local/bin:$PATH"
+
 # bun
 export BUN_INSTALL="$XDG_DATA_HOME/bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
