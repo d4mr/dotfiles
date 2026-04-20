@@ -1,11 +1,4 @@
-# XDG Base Directory spec
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_STATE_HOME="$HOME/.local/state"
-export XDG_CACHE_HOME="$HOME/.cache"
-
-# zsh history — stored under XDG_STATE_HOME, not tracked
-export HISTFILE="$XDG_STATE_HOME/zsh/history"
+# Sourced only for interactive shells. Env vars live in ~/.zshenv.
 
 eval "$(starship init zsh)"
 
@@ -16,13 +9,9 @@ eval "$(zoxide init zsh)"
 # Machine-local work/secret env — not tracked
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
-# mise — polyglot version manager (node, go, python, etc.)
+# mise — interactive activation hooks (auto-switch on cd).
+# Shims PATH is already in .zshenv so non-interactive shells work too.
 eval "$(mise activate zsh)"
 
-# uv — tool installs land here
-export PATH="$HOME/.local/bin:$PATH"
-
-# bun
-export BUN_INSTALL="$XDG_DATA_HOME/bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+# bun completions
 [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
